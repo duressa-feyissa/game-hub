@@ -2,22 +2,9 @@ import { useInfiniteQuery  } from '@tanstack/react-query';
 import APIClient, {FetchResponse} from '../service/api-client';
 import ms from 'ms';
 import useGameQueryStore from '../store';
+import { Game } from '../entities/Game';
 
-export interface Platform {
-  id: number;
-  name: string;
-  slug: string;
-}
 
-export interface Game {
-    id: number;
-    name: string;
-    background_image: string;
-    parent_platforms: {platform: Platform}[];
-    metacritic: number;
-    rating_top: number;
-  }
-  
 const apiClient = new APIClient<Game>('/games');
 
 const useGames = () => {
@@ -36,7 +23,7 @@ const useGames = () => {
     },
     staleTime: ms('24h')
 
-  });
+  }); 
 }
 
 export default useGames; 

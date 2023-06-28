@@ -25,6 +25,10 @@ class APIClient<T> {
         .then(response => response.data);
     }
 
+    get = (id: string | number) => {
+        return axiosInstance.get<T>(`${this.endpoint}/${id}`)
+        .then(response => response.data);
+    }
 }
 
 export default APIClient;
